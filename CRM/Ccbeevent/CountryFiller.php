@@ -66,7 +66,7 @@ class CRM_Ccbeevent_CountryFiller {
       ->execute()
       ->first();
     if ($relationship) {
-      return $relationships['contact_id_b'];
+      return $relationship['contact_id_b'];
     }
 
     return NULL;
@@ -88,7 +88,7 @@ class CRM_Ccbeevent_CountryFiller {
       ->execute()
       ->first();
     if ($relationship) {
-      return $relationships['Committee_or_Network_Relationship_Details.Country.id'];
+      return $relationship['Committee_or_Network_Relationship_Details.Country.id'];
     }
 
     return NULL;
@@ -110,7 +110,7 @@ class CRM_Ccbeevent_CountryFiller {
       ->execute()
       ->first();
     if ($relationship) {
-      return $relationships['Committee_or_Network_Relationship_Details.Country.id'];
+      return $relationship['Committee_or_Network_Relationship_Details.Country.id'];
     }
 
     return NULL;
