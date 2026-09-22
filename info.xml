@@ -12,14 +12,12 @@
     </author>
   </authors>
   <urls>
-    <url desc="Main Extension Page">https://FIXME</url>
-    <url desc="Documentation">https://FIXME</url>
-    <url desc="Support">https://FIXME</url>
+    <url desc="Main Extension Page">https://github.com/AlainBenbassat/ccbeevent</url>
     <url desc="Licensing">https://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
   <releaseDate>2026-09-22</releaseDate>
   <version>1.0.0</version>
-  <develStage>alpha</develStage>
+  <develStage>stable</develStage>
   <compatibility mode="semver">
     <comments>Semantic versioning. For example, compatibility with "6.1" implies compatibility with "6.2".</comments>
     <ver>6.16</ver>
