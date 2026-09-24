@@ -7,6 +7,13 @@ require_once 'ccbeevent.civix.php';
 
 use CRM_Ccbeevent_ExtensionUtil as E;
 
+function ccbeevent_civicrm_postCommit(string $op, string $objectName, int $objectId, mixed $objectRef = NULL, ?array $params = NULL): void {
+  if ($op == 'create' && $objectName == 'Participant' && $objectRef) {
+    $cf = new CRM_Ccbeevent_CountryFiller();
+    $cf->fillCountryOfParticipant($objectId, (int)$objectRef->contact_id);
+  }
+}
+
 /**
  * Implements hook_civicrm_config().
  *

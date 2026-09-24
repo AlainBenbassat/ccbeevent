@@ -10,18 +10,19 @@ class CRM_Ccbeevent_CountryFiller {
       ->execute();
 
     foreach ($participants as $participant) {
-      $countryId = $this->getCountryOfContact($participant['contact_id']);
-      if ($countryId) {
-        $this->fillCountryOfParticipant($participant['id'], $countryId);
-      }
+      $this->fillCountryOfParticipant($participant['id'], $participant['contact_id']);
     }
   }
 
-  public function fillCountryOfParticipant(int $participantId, int $countryId) {
-    \Civi\Api4\Participant::update(FALSE)
-      ->addValue('Participant_Country.Country', $countryId)
-      ->addWhere('id', '=', $participantId)
-      ->execute();
+  public function fillCountryOfParticipant(int $participantId, int $contactId) {
+    $countryId = $this->getCountryOfContact($contactId);
+    if ($countryId) {
+      \Civi\Api4\Participant::update(FALSE)
+        ->addValue('Participant_Country.Country', $countryId)
+        ->addWhere('id', '=', $participantId)
+        ->addWhere('Participant_Country.Country', 'IS EMPTY')
+        ->execute();
+    }
   }
 
   public function getCountryOfContact(int $contactId): ?int {
@@ -99,7 +100,7 @@ class CRM_Ccbeevent_CountryFiller {
     // but this is a separate function because committee member has a higher precedence than mailing list recipient
 
     $relTypes = [
-      25, // mailing recipient
+      23, // mailing recipient
     ];
 
     $relationship = \Civi\Api4\Relationship::get(FALSE)
