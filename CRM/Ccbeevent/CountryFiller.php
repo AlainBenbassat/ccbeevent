@@ -57,6 +57,7 @@ class CRM_Ccbeevent_CountryFiller {
       16, // Brussels Representative
       14, // Associate Representative
       15, // Observer Representative
+      27, // staff member
     ];
 
     $relationship = \Civi\Api4\Relationship::get(FALSE)
